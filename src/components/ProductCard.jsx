@@ -3,6 +3,8 @@ import React, { useRef, useState } from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 
 
 const ProductCard = ({data,handleEdit,handleDelete}) => {
@@ -66,14 +68,14 @@ const ProductCard = ({data,handleEdit,handleDelete}) => {
           className="btn btn-danger btn-sm me-2"
           onClick={() => handleDelete(row.id)}
         >
-          Delete
+          <MdDeleteOutline />
         </button>
         <Link to="/ProductList">
         <button
           className="btn btn-warning btn-sm"
           onClick={() => handleEdit(row.id)}
         >
-          Edit
+      <FaEdit />
         </button>
         </Link>
       </>
