@@ -68,7 +68,7 @@ const ProductCard = ({data,handleEdit,handleDelete}) => {
         >
           Delete
         </button>
-        <Link to="/">
+        <Link to="/ProductList">
         <button
           className="btn btn-warning btn-sm"
           onClick={() => handleEdit(row.id)}

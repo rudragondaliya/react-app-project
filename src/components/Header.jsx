@@ -13,7 +13,7 @@ const Header = ({ setTextFilter, textfilter }) => {
             <span className="navbar-toggler-icon" />
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <div className="collapse navbar-collapse bg-dark p-3 z-3" id="navbarNavDropdown">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                <li className="nav-item">
                  <Link className="nav-link" to="/">HOME</Link>

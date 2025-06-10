@@ -15,7 +15,7 @@ const Home = ({handleLogin}) => {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="collapse navbar-collapse bg-light p-4" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 text-center text-lg-start">
               <li className="nav-item fw-semibold">
                 <Link className="nav-link" to="/">HOME</Link>
