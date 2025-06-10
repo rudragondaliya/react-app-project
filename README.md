@@ -1,12 +1,111 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+React E-Commerce App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern, full-featured e-commerce web application built using React, React Router, Axios, and Bootstrap. This app supports product management, cart functionality, and a sleek UI, making it ideal for online stores or React development practice.
 
-## Expanding the ESLint configuration
+Live Preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Visit the live application here:
+[https://react-app-project-delta.vercel.app/](https://react-app-project-delta.vercel.app/)
+
+---
+
+Features
+
+* Product Listing: Add, update, and delete products with image previews
+* Category Filtering: Assign and view products by category
+* Shopping Cart: Add to cart, change quantity, and remove items
+* Toast Notifications: Smooth user feedback via React Toastify
+* Data Handling: Uses mock backend with Axios and json-server
+* Routing: Multi-page navigation with React Router
+* Image Upload: Preview product images using FileReader
+
+---
+
+Tech Stack
+
+* Frontend: React, Bootstrap
+* Routing: React Router DOM
+* Notifications: React Toastify
+* Data Fetching: Axios
+* Backend (mock): json-server
+
+---
+
+Getting Started
+
+Prerequisites:
+
+* Node.js and npm installed
+* Git installed
+
+Steps to Run Locally:
+
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/your-username/react-ecommerce-app.git
+   cd react-ecommerce-app
+   ```
+
+2. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+3. Run mock backend using json-server (optional, for local development):
+
+   ```
+   npx json-server --watch db.json --port 3000
+   ```
+
+4. Start the React app:
+
+   ```
+   npm start
+   ```
+
+---
+
+**Available Routes**
+
+| Route          | Description                 |
+| -------------- | --------------------------- |
+| `/`            | Home / Login Page           |
+| `/ProductList` | Form to Add/Update Products |
+| `/ProductCard` | Displays Product Cards      |
+| `/cart`        | Add to Cart Page            |
+| `/CartPage`    | Final Cart / Checkout View  |
+
+---
+
+**Project Structure**
+
+```
+src/
+│
+├── components/
+│   ├── Aside.jsx
+│   ├── Card.jsx
+│   ├── CartPage.jsx
+│   ├── ProductCard.jsx
+│   └── ProductList.jsx
+│
+├── pages/
+│   └── Home.jsx
+│
+├── App.jsx
+└── index.js
+```
+
+---
+
+**License**
+
+This project is licensed under the MIT License.
+
+---
+
