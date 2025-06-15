@@ -17,7 +17,9 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [brandList, setBrandList] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
+  const [textFilter, setTextFilter] = useState('');
   const imageRef = useRef('')
+  
   
    const navigate = useNavigate();
 
@@ -38,7 +40,9 @@ const App = () => {
 
   const url = "http://localhost:3000/Products";
 
-   const filteredData = data;
+     const filteredData = data.filter((item) =>
+    item.pname?.toLowerCase().includes(textFilter.toLowerCase())
+  );
 
   useEffect(() => {
     handleFetch();
@@ -47,7 +51,9 @@ const App = () => {
   useEffect(() => {
     const brands = ['All', ...new Set(filteredData.map(item => item.brand || 'Unknown'))];
     setBrandList(brands);
-  }, [filteredData]);
+  }, [data]);
+
+  
 
   const displayedProducts = selectedBrand === 'All'
     ? filteredData
@@ -148,6 +154,8 @@ const App = () => {
           setSelectedBrand={setSelectedBrand}
           brandList={brandList}
           displayedProducts={displayedProducts}
+          textFilter={textFilter}
+          setTextFilter={setTextFilter}
           />} />
           <Route
             path="/ProductList"

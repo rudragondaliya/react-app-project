@@ -5,8 +5,9 @@ import card1 from '../assets/img/product-img-1.webp';
 import card2 from '../assets/img/product-img-2.webp';
 import card3 from '../assets/img/product-img-3.webp';
 import card4 from '../assets/img/product-img-4.webp';
+import { FaShoppingCart } from "react-icons/fa";
 
-const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelectedBrand,brandList,displayedProducts}) => {
+const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelectedBrand,brandList,displayedProducts,textfilter,setTextFilter}) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary shadow">
@@ -36,14 +37,19 @@ const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelecte
                 <Link className="nav-link mx-2" to="#">CONTACT</Link>
               </li>
             </ul>
-            <div className="icons d-flex justify-content-center justify-content-lg-end align-items-center gap-3 me-3 mt-2 mt-lg-0">
-              <i className="bi bi-search fs-5 fw-semibold" />
+            <div className="icons d-flex justify-content-center justify-content-lg-end align-items-center gap-3 me-2 mt-2 mt-lg-0">
+             
               <i className="bi bi-person-circle fs-5 fw-semibold" />
+               <Link to="/CartPage">
+                  <i className="bi bi-cart-fill fs-5 text-black "></i>   
+                </Link>
               <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Login</button>
             </div>
           </div>
         </div>
       </nav>
+
+      
 
       <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
@@ -182,7 +188,7 @@ const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelecte
         </div>
 
 
-        <div className="brand-filter">
+        <div className="brand-filter d-flex gap-4 align-items-center">
           <label htmlFor="brand-select" className="form-label fw-semibold me-2">Filter by Brand:</label>
           <select
             id="brand-select"
@@ -195,13 +201,25 @@ const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelecte
               <option key={idx} value={brand}>{brand}</option>
             ))}
           </select>
+           <form class="d-flex" role="search">
+            <input
+            className="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            value={textfilter}
+            onChange={(e) => setTextFilter(e.target.value)}
+          />
+
+      </form>
         </div>
+       
       </div>
 
       <div className="container-fluid px-5">
         <div
           className="row"
-          style={{ maxHeight: '500px', overflowY: 'auto' }}
+          style={{ maxHeight: '400px', overflowY: 'auto' }}
         >
           {
             displayedProducts.length > 0 ? (
@@ -216,7 +234,7 @@ const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelecte
                         <p className="card-text">${Price}</p>
                         <h6 className='card-subtitle'>{desc}</h6>
                         <h6>Category: {category}</h6>
-                        <button className="btn btn-primary w-100" onClick={() => handleAddToCart(val)}>Add to cart</button>
+                        <button className="btn w-100" onClick={() => handleAddToCart(val)}>Add to cart</button>
                       </div>
                     </div>
                   </div>
