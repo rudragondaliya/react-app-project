@@ -39,7 +39,7 @@ const Card = ({data,handleAddToCart }) => {
                     <h6 className='card-subtitle mb-2'>Category: {category}</h6>
                     <h6 className='card-subtitle mb-2'>rating: {rating}</h6>
                     <p className="card-text">{desc}</p>
-                    <a href="#" className="btn btn-primary w-100"  onClick={() => handleAddToCart(val)}>Add to cart</a>
+                    <a href="#" className="btn w-100"  onClick={() => handleAddToCart(val)}>Add to cart</a>
                     </div>
                 </div>
               </div>

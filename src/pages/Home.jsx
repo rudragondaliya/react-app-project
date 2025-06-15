@@ -175,14 +175,13 @@ const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelecte
 
 
      <section className='product-view p-4'>
-      {/* Heading and Brand Filter */}
       <div className="d-flex justify-content-between align-items-center mb-3 px-5">
         <div className="title text-start">
           <p><small className="text-secondary fw-semibold fs-5">Check out latest products</small></p>
           <h1 className="text-black display-5 fw-semibold">New Products</h1>
         </div>
 
-        {/* Dropdown */}
+
         <div className="brand-filter">
           <label htmlFor="brand-select" className="form-label fw-semibold me-2">Filter by Brand:</label>
           <select
@@ -199,7 +198,6 @@ const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelecte
         </div>
       </div>
 
-      {/* Scrollable Product Section */}
       <div className="container-fluid px-5">
         <div
           className="row"
