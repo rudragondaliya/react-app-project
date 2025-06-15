@@ -140,13 +140,7 @@ ul li{
 }
 
 
-
-.product-area{
-    overflow-y: scroll;
-
-}
-
-.btn{
+.product-view .btn{
     background-color: #e8363c !important;
     color: white !important;
 }
