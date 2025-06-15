@@ -15,6 +15,8 @@ const App = () => {
   const [editId, setEditId] = useState(null);
   const [category, setCategory] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [brandList, setBrandList] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState('All');
   const imageRef = useRef('')
   
    const navigate = useNavigate();
@@ -36,9 +38,20 @@ const App = () => {
 
   const url = "http://localhost:3000/Products";
 
+   const filteredData = data;
+
   useEffect(() => {
     handleFetch();
   }, []);
+
+  useEffect(() => {
+    const brands = ['All', ...new Set(filteredData.map(item => item.brand || 'Unknown'))];
+    setBrandList(brands);
+  }, [filteredData]);
+
+  const displayedProducts = selectedBrand === 'All'
+    ? filteredData
+    : filteredData.filter(item => item.brand === selectedBrand);
 
   const handleFetch = async () => {
     const res = await axios.get(url);
@@ -127,7 +140,15 @@ const App = () => {
       {!isCartPage && !isHome && <Aside />}
       <div className="flex-grow-1 overflow-auto w-100">
         <Routes>
-          <Route path='/' element={<Home handleLogin={handleLogin}/>} />
+          <Route path='/' element={<Home 
+          filteredData={filteredData}
+          handleLogin={handleLogin}
+          handleAddToCart={handleAddToCart}
+          selectedBrand={selectedBrand}
+          setSelectedBrand={setSelectedBrand}
+          brandList={brandList}
+          displayedProducts={displayedProducts}
+          />} />
           <Route
             path="/ProductList"
             element={

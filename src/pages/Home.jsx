@@ -6,7 +6,7 @@ import card2 from '../assets/img/product-img-2.webp';
 import card3 from '../assets/img/product-img-3.webp';
 import card4 from '../assets/img/product-img-4.webp';
 
-const Home = ({handleLogin}) => {
+const Home = ({filteredData,handleLogin,handleAddToCart,selectedBrand,setSelectedBrand,brandList,displayedProducts}) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary shadow">
@@ -170,43 +170,86 @@ const Home = ({handleLogin}) => {
         </div>
       </section>
 
+  
+   
+
+
+     <section className='product-view p-4'>
+      {/* Heading and Brand Filter */}
+      <div className="d-flex justify-content-between align-items-center mb-3 px-5">
+        <div className="title text-start">
+          <p><small className="text-secondary fw-semibold fs-5">Check out latest products</small></p>
+          <h1 className="text-black display-5 fw-semibold">New Products</h1>
+        </div>
+
+        {/* Dropdown */}
+        <div className="brand-filter">
+          <label htmlFor="brand-select" className="form-label fw-semibold me-2">Filter by Brand:</label>
+          <select
+            id="brand-select"
+            className="form-select"
+            value={selectedBrand}
+            onChange={(e) => setSelectedBrand(e.target.value)}
+            style={{ width: '200px' }}
+          >
+            {brandList.map((brand, idx) => (
+              <option key={idx} value={brand}>{brand}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Scrollable Product Section */}
+      <div className="container-fluid px-5">
+        <div
+          className="row"
+          style={{ maxHeight: '500px', overflowY: 'auto' }}
+        >
+          {
+            displayedProducts.length > 0 ? (
+              displayedProducts.map((val, idx) => {
+                const { id, pname, Price, rating, category, desc, file } = val;
+                return (
+                  <div className="col-md-3 mb-3" key={id || idx}>
+                    <div className="card" style={{ width: '100%' }}>
+                      <img src={file?.url} className="card-img-top" alt="..." height={200} />
+                      <div className="card-body">
+                        <h5 className="card-title">{pname}</h5>
+                        <p className="card-text">${Price}</p>
+                        <h6 className='card-subtitle'>{desc}</h6>
+                        <h6>Category: {category}</h6>
+                        <button className="btn btn-primary w-100" onClick={() => handleAddToCart(val)}>Add to cart</button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="text-center text-muted fs-5">No products found for this brand.</div>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+
      
 <footer className="text-center text-lg-start bg-body-tertiary text-muted">
 
-  {/* Social Section */}
+
   <section className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between p-4 border-bottom text-center text-lg-start">
     <div className="mb-3 mb-lg-0">
       <span>Get connected with us on social networks:</span>
     </div>
-    <div>
-      <a href="#" className="me-4 text-reset">
-        <i className="fab fa-facebook-f" />
-      </a>
-      <a href="#" className="me-4 text-reset">
-        <i className="fab fa-twitter" />
-      </a>
-      <a href="#" className="me-4 text-reset">
-        <i className="fab fa-google" />
-      </a>
-      <a href="#" className="me-4 text-reset">
-        <i className="fab fa-instagram" />
-      </a>
-      <a href="#" className="me-4 text-reset">
-        <i className="fab fa-linkedin" />
-      </a>
-      <a href="#" className="me-4 text-reset">
-        <i className="fab fa-github" />
-      </a>
-    </div>
   </section>
 
-  {/* Main Content Section */}
+ 
   <section>
     <div className="container text-center text-md-start mt-5">
       <div className="row mt-3">
 
-        {/* Brand Column */}
-        <div className="col-12 col-md-6 col-lg-4 mb-4">
+        
+        <div className="col-12 col-md-6 col-lg-6 mb-4">
           <h6 className="text-uppercase fw-bold mb-4">
             <i className="fas fa-gem me-3" /> Garderobe
           </h6>
@@ -215,7 +258,7 @@ const Home = ({handleLogin}) => {
           </p>
         </div>
 
-        {/* Products Column */}
+       
         <div className="col-6 col-md-3 col-lg-2 mb-4">
           <h6 className="text-uppercase fw-bold mb-4">Products</h6>
           <p><a href="#!" className="text-reset">Angular</a></p>
@@ -224,7 +267,7 @@ const Home = ({handleLogin}) => {
           <p><a href="#!" className="text-reset">Laravel</a></p>
         </div>
 
-        {/* Useful Links Column */}
+     
         <div className="col-6 col-md-3 col-lg-2 mb-4">
           <h6 className="text-uppercase fw-bold mb-4">Useful Links</h6>
           <p><a href="#!" className="text-reset">Pricing</a></p>
@@ -239,7 +282,7 @@ const Home = ({handleLogin}) => {
     </div>
   </section>
 
-  {/* Copyright */}
+
   <div className="text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
     © 2021 Copyright: <a className="text-reset fw-bold" href="#">Garderobe.com</a>
   </div>
